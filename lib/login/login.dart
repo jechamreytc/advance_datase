@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:advance_datase/dashboard/user_dashboard.dart';
+import 'package:advance_datase/register/register.dart';
 import 'package:advance_datase/session_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -34,7 +35,6 @@ class _LoginState extends State<Login> {
             decoration: InputDecoration(
               hintText: "Password",
             ),
-            obscureText: true,
           ),
           SizedBox(height: 20),
           ElevatedButton(
@@ -43,6 +43,16 @@ class _LoginState extends State<Login> {
             },
             child: Text("Login"),
           ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Register()),
+              );
+            },
+            child: Text("Register"),
+          ),
         ],
       ),
     );
@@ -50,7 +60,7 @@ class _LoginState extends State<Login> {
 
   void login() async {
     try {
-      var url = Uri.parse(SessionStorage.url + "login.php");
+      var url = Uri.parse("${SessionStorage.url}login.php");
       Map<String, dynamic> jsonData = {
         "username": _usernameController.text,
         "password": _passwordController.text,
@@ -60,6 +70,7 @@ class _LoginState extends State<Login> {
         "operation": "login",
         "json": jsonEncode(jsonData)
       };
+      print(url);
 
       var response = await http.post(url, body: requestBody);
       var res = json.decode(response.body);
@@ -68,7 +79,7 @@ class _LoginState extends State<Login> {
         // Navigate to the UserDashboard if login is successful
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => UserDashboard()),
+          MaterialPageRoute(builder: (context) => const UserDashboard()),
         );
         print("Successful Login");
       } else {
