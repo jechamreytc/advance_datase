@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:advance_datase/login/login.dart';
+import 'package:advance_datase/login/user_login.dart';
 import 'package:advance_datase/session_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -37,7 +37,7 @@ class _RegisterState extends State<Register> {
         print("Registration successful");
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const Login()),
+          MaterialPageRoute(builder: (context) => const UserLogin()),
         );
       } else {
         print("Registration failed");

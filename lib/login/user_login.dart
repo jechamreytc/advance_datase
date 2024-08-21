@@ -1,18 +1,19 @@
 import 'dart:convert';
+import 'package:advance_datase/components/get_all_data.dart';
 import 'package:advance_datase/dashboard/user_dashboard.dart';
 import 'package:advance_datase/register/register.dart';
 import 'package:advance_datase/session_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class UserLogin extends StatefulWidget {
+  const UserLogin({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _UserLoginState createState() => _UserLoginState();
 }
 
-class _LoginState extends State<Login> {
+class _UserLoginState extends State<UserLogin> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -79,7 +80,7 @@ class _LoginState extends State<Login> {
         // Navigate to the UserDashboard if login is successful
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const UserDashboard()),
+          MaterialPageRoute(builder: (context) => const GetAllData()),
         );
         print("Successful Login");
       } else {

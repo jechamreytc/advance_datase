@@ -1,4 +1,5 @@
-import 'package:advance_datase/login/login.dart';
+import 'package:advance_datase/components/get_all_data.dart';
+import 'package:advance_datase/login/user_login.dart';
 import 'package:advance_datase/register/register.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Register(),
+      home: UserLogin(),
     );
   }
 }
